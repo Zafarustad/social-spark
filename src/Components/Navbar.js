@@ -36,7 +36,7 @@ class Navbar extends Component {
     } = this.props;
     return (
       <AppBar>
-        <Toolbar className='ml-auto'>
+        <Toolbar>
           {!authenticated ? (
             <>
               <Button
@@ -79,16 +79,18 @@ class Navbar extends Component {
                   <PeopleAltIcon color='secondary' />
                 </MyButton>
               </Link>
-              <PostSpark />
               <Link to='/'>
                 <MyButton tip='Home'>
                   <HomeIcon color='secondary' />
                 </MyButton>
               </Link>
+              <div className='ml-auto'>
+              <PostSpark />
               <Notifications />
               <MyButton onClick={this.logoutUser} tip='Logout'>
                 <LogoutIcon color='secondary' />
               </MyButton>
+              </div>
             </>
           )}
         </Toolbar>

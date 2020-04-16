@@ -678,7 +678,7 @@ a {
 }
 
 .over-auto {
-  overflow-x: auto;
+  overflow: auto;
 }
 
 .form-contain {

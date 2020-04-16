@@ -9,6 +9,7 @@ import {
   SET_SPARK,
   ON_LOADED_DATA,
   SUBMIT_COMMENT,
+  GET_ALL_USERS
 } from '../Reducers/types';
 import {
   triggerClearErrorAction,
@@ -54,6 +55,11 @@ export const submitCommentACtion = (data) => ({
   type: SUBMIT_COMMENT,
   payload: data,
 });
+
+export const getAllUsersAction = (data) => ({
+  type: GET_ALL_USERS,
+  payload: data
+})
 
 export const getSparksDispatch = () => async (dispatch) => {
   try {
@@ -136,3 +142,13 @@ export const submitCommentDispatch = (sparkId, data) => async (dispatch) => {
     dispatch(triggerErrorAction(err.response.data));
   }
 };
+
+export const getAllUsersDispatch = () => async dispatch => {
+  try {
+    const res = await axios.get('/users')
+    dispatch(getAllUsersAction(res.data))
+  }
+  catch(err) {
+    console.log(err)
+  }
+}

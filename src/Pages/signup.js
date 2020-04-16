@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
-import SigninIcon from '@material-ui/icons/VpnKey';
+import SignUpIcon from '@material-ui/icons/VpnKey';
 import Typography from '@material-ui/core/Typography';
 import signupImg from '../assets/signup.png';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -81,7 +81,7 @@ class Signup extends React.Component {
             <Typography variant='h5'>Welcome to Social Spark</Typography>
 
             <Avatar>
-              <SigninIcon color='primary' />
+              <SignUpIcon color='primary' />
             </Avatar>
             <Typography component='h1' variant='h5'>
               Sign in
@@ -158,10 +158,10 @@ class Signup extends React.Component {
                   color='primary'
                 />
               )}
-              <Link className='m-t-10' to='/login'>
+            </form>
+              <Link className='mt-4 mr-auto' to='/login'>
                 {'Have an account? Log In'}
               </Link>
-            </form>
           </div>
         </Grid>
       </Grid>

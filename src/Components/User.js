@@ -3,13 +3,13 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
-import NavBar from './Navbar';
 import { getUserDispatch } from '../Actions/userActions';
 import SparkLoader from '../Loaders/SparkLoader';
 import axios from 'axios';
 import { isMobile } from 'react-device-detect';
 import Grid from '@material-ui/core/Grid';
 import Spark from './Spark';
+import MobileNav from './MobileNav';
 import ProfileLoader from '../Loaders/ProfileLoader';
 import StaticProfile from './StaticProfile';
 import EmptySparks from '../assets/empty.png';
@@ -77,7 +77,7 @@ export class User extends Component {
 
     return (
       <div className='container'>
-        <NavBar />
+        <MobileNav />
         <Grid container>
           {!isMobile ? (
             <>
