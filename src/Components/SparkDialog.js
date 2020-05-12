@@ -1,59 +1,54 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { openSparkDispatch } from "../Actions/dataActions";
-import { Link } from "react-router-dom";
-import { isMobile } from "react-device-detect";
-import LikeButton from "./LikeButton";
-import Comments from "./Comments";
-import CommentForm from "./CommentForm";
-import MyButton from "./MyButton";
-import dayjs from "dayjs";
-import CloseIcon from "@material-ui/icons/Close";
-import ExpandIcon from "@material-ui/icons/UnfoldMore";
-import withStyles from "@material-ui/core/styles/withStyles";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import { CircularProgress, Grid, Typography, Avatar } from "@material-ui/core";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { openSparkDispatch } from '../Actions/dataActions';
+import { Link } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
+import LikeButton from './LikeButton';
+import Comments from './Comments';
+import CommentForm from './CommentForm';
+import MyButton from './MyButton';
+import dayjs from 'dayjs';
+import CloseIcon from '@material-ui/icons/Close';
+import ExpandIcon from '@material-ui/icons/UnfoldMore';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import { CircularProgress, Grid, Typography, Avatar } from '@material-ui/core';
 
 const styles = {
   invisibleSeparator: {
-    border: "none",
-    margin: 4
+    border: 'none',
+    margin: 4,
   },
   profileImage: {
     maxWidth: 130,
     height: 130,
-    borderRadius: "50%",
-    objectFit: "cover"
+    borderRadius: '50%',
+    objectFit: 'cover',
   },
   dialogContent: {
-    padding: 20
+    padding: 20,
   },
   closeButton: {
-    position: "absolute",
-    left: "90%"
+    position: 'absolute',
+    left: '90%',
   },
   spinnerContain: {
-    textAlign: "center",
-    marginTop: isMobile ? "80%" : 50,
-    marginBottom: isMobile ? "50%" : 50
+    textAlign: 'center',
+    marginTop: isMobile ? '80%' : 50,
+    marginBottom: isMobile ? '50%' : 50,
   },
   likeBtn: {
-    position: "relative",
-    right: "5%",
-    display: "flex",
-    alignItems: "center"
+    position: 'relative',
+    right: '5%',
+    display: 'flex',
+    alignItems: 'center',
   },
   image: {
     width: 120,
-    height: 120
-  }
+    height: 120,
+  },
 };
 
 class SparkDialog extends Component {
@@ -61,8 +56,8 @@ class SparkDialog extends Component {
     super(props);
     this.state = {
       dialog: false,
-      newPath: "",
-      oldPath: ""
+      newPath: '',
+      oldPath: '',
     };
   }
 
@@ -94,7 +89,7 @@ class SparkDialog extends Component {
     const {
       classes,
       data,
-      ui: { loading }
+      ui: { loading },
     } = this.props;
 
     return (
@@ -149,7 +144,7 @@ class SparkDialog extends Component {
                     <hr className={classes.invisibleSeparator} />
                     <Typography variant='body2' color='textSecondary'>
                       {dayjs(data.spark.createdAt).format(
-                        "h:mm a, MMMM DD YYYY"
+                        'h:mm a, MMMM DD YYYY'
                       )}
                     </Typography>
                     <div className={classes.likeBtn}>
@@ -171,10 +166,10 @@ class SparkDialog extends Component {
 
 const mapStateToProps = ({ data, ui }) => ({ data, ui });
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
-      openSparkDispatch
+      openSparkDispatch,
     },
     dispatch
   );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MyButton from './MyButton';
 import { isMobile } from 'react-device-detect';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -18,7 +18,7 @@ const styles = {
   },
   username: {
     marginLeft: 15,
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
 };
 
@@ -41,10 +41,14 @@ class Following extends Component {
   };
 
   render() {
-    const { following, classes, history } = this.props;
+    const { following, classes } = this.props;
     return (
       <>
-        <span className='mr-5 flex-row align-items-center' onClick={this.handleDialog} style={{cursor: 'pointer'}}>
+        <span
+          className='mr-5 flex-row align-items-center'
+          onClick={this.handleDialog}
+          style={{ cursor: 'pointer' }}
+        >
           <Typography color='primary' variant='h6'>
             Following: {following.length}
           </Typography>
@@ -66,7 +70,7 @@ class Following extends Component {
           </MyButton>
           <DialogContent>
             {following.length === 0 ? (
-              <div>You have no Followers</div>
+              <div className='text-center p-50'>No users found</div>
             ) : (
               following.map((user, index) => {
                 return (

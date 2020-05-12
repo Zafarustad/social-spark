@@ -8,6 +8,9 @@ import {
   SET_SPARK,
   SUBMIT_COMMENT,
   GET_ALL_USERS,
+  GET_MESSAGES,
+  POST_MESSAGE,
+  DELETE_MESSAGE,
 } from '../Reducers/types';
 
 const initialState = {
@@ -15,6 +18,7 @@ const initialState = {
   sparks: [],
   loading: false,
   users: [],
+  messages: [],
 };
 
 export default function (state = initialState, action) {
@@ -88,6 +92,28 @@ export default function (state = initialState, action) {
         users: action.payload,
       };
 
+    case GET_MESSAGES:
+      return {
+        ...state,
+        messages: action.payload,
+      };
+
+    case POST_MESSAGE: {
+      return {
+        ...state,
+        messages: [...state.messages, action.payload],
+      };
+    }
+
+    case DELETE_MESSAGE: {
+      let index = state.messages.findIndex(
+        (message) => message.messageId === action.payload
+      );
+      state.messages.splice(index, 1);
+      return {
+        ...state,
+      };
+    }
     default:
       return state;
   }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
 import { getUserDispatch } from '../Actions/userActions';
 import SparkLoader from '../Loaders/SparkLoader';
 import axios from 'axios';
@@ -57,21 +56,31 @@ export class User extends Component {
         return <SparkLoader key={index} />;
       })
     ) : sparks.length === 0 ? (
-      <div>
+      <div className='m-t-20'>
         <p className='text-center'>No Sparks from this user</p>
         {!isMobile ? (
-          <img src={EmptySparks} width='800px' height='500px' />
+          <img src={EmptySparks} alt='avatar' width='800px' height='500px' />
         ) : (
-          <img src={EmptySparks} width='400px' height='340px' />
+          <img src={EmptySparks} width='410px' alt='avatar' height='340px' />
         )}
       </div>
     ) : !sparkIdParam ? (
-      sparks.map((spark) => <Spark key={spark.sparkId} spark={spark} />)
+      sparks.map((spark) => (
+        <Spark userProfile={true} key={spark.sparkId} spark={spark} />
+      ))
     ) : (
       sparks.map((spark) => {
         if (spark.sparkId === sparkIdParam)
-          return <Spark key={spark.sparkId} spark={spark} openDialog />;
-        else return <Spark key={spark.sparkId} spark={spark} />;
+          return (
+            <Spark
+              userProfile={true}
+              key={spark.sparkId}
+              spark={spark}
+              openDialog
+            />
+          );
+        else
+          return <Spark userProfile={true} key={spark.sparkId} spark={spark} />;
       })
     );
 

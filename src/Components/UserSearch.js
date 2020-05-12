@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { getAllUsersDispatch } from '../Actions/dataActions';
 import MyButton from './MyButton';
@@ -9,13 +9,10 @@ import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 import {
   withStyles,
-  InputBase,
   DialogContent,
   Dialog,
   DialogTitle,
-  Button,
   Avatar,
-  Grid,
   TextField,
   Typography,
   Divider,
@@ -50,7 +47,6 @@ class UserSearch extends Component {
   };
 
   openDialog = () => {
-    const { dialog } = this.state;
     const { getAllUsersDispatch } = this.props;
 
     this.setState({ dialog: true });
@@ -82,7 +78,6 @@ class UserSearch extends Component {
   render() {
     const {
       classes,
-      data: { users },
     } = this.props;
     const { dialog, searchField } = this.state;
     return (

@@ -1,47 +1,45 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import LikeButton from "./LikeButton";
-import dayjs from "dayjs";
-import SparkDialog from "./SparkDialog";
-import DeleteSpark from "./DeleteSpark";
-import MyButton from "./MyButton";
-import ChatIcon from "@material-ui/icons/Chat";
-import withStyles from "@material-ui/core/styles/withStyles";
-import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
-import Avatar from "@material-ui/core/Avatar";
-import Grid from "@material-ui/core/Grid";
-import { Link } from "react-router-dom/";
-import relativeTime from "dayjs/plugin/relativeTime";
-import { isMobile } from "react-device-detect";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import LikeButton from './LikeButton';
+import dayjs from 'dayjs';
+import SparkDialog from './SparkDialog';
+import DeleteSpark from './DeleteSpark';
+import MyButton from './MyButton';
+import ChatIcon from '@material-ui/icons/Chat';
+import withStyles from '@material-ui/core/styles/withStyles';
+import { Card, CardContent, Typography } from '@material-ui/core';
+import Avatar from '@material-ui/core/Avatar';
+import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom/';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { isMobile } from 'react-device-detect';
 
 const styles = {
   container: {
-    margin: 14
+    margin: 14,
   },
   card: {
-    display: "flex",
-    backgroundColor: "#151515",
-    color: "#fff",
-    width: !isMobile ? "350px" : 'auto',
-    height: "140px"
+    display: 'flex',
+    backgroundColor: '#151515',
+    color: '#fff',
+    width: !isMobile ? '350px' : 'auto',
+    height: '140px',
   },
   image: {
-    marginTop: "15px",
-    marginLeft: "10px"
+    marginTop: '15px',
+    marginLeft: '10px',
   },
   content: {
-    marginLeft: "10px",
-    objectFit: "cover"
-  }
+    marginLeft: '10px',
+    objectFit: 'cover',
+  },
 };
 
 class Spark extends Component {
-
   textTruncate = (str) => {
-    if(str.length <= 20) return str
-    return str.slice(0, 20) + '....'
-  }
+    if (str.length <= 20) return str;
+    return str.slice(0, 20) + '....';
+  };
 
   render() {
     dayjs.extend(relativeTime);
@@ -54,13 +52,17 @@ class Spark extends Component {
         userImage,
         sparkId,
         likeCount,
-        commentCount
+        commentCount,
+        userProfile,
       },
-      user
+      user,
     } = this.props;
 
     return (
-      <div className={classes.container}>
+      <div
+        className={classes.container}
+        style={{ width: isMobile ? '90%' : ''}}
+      >
         <Grid container alignItems='center'>
           <Grid item xs={12}>
             <Card className={classes.card}>
@@ -78,7 +80,9 @@ class Spark extends Component {
                 >
                   {username}
                 </Typography>
-                <Typography variant='body1'>{this.textTruncate(body)}</Typography>
+                <Typography variant='body1'>
+                  {this.textTruncate(body)}
+                </Typography>
                 <Typography variant='body2'>
                   {dayjs(createdAt).fromNow()}
                 </Typography>

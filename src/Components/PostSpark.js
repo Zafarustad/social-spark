@@ -4,14 +4,11 @@ import { bindActionCreators } from "redux";
 import { postSparkDispatch } from "../Actions/dataActions";
 import MyButton from "./MyButton";
 import AddIcon from "@material-ui/icons/Add";
-import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from '@material-ui/core/Slide';
 
@@ -40,12 +37,11 @@ class PostSpark extends Component {
   }
 
   handleOpen = () => {
-    const { dialog, errors } = this.state;
     this.setState({ dialog: true });
   };
 
   handleClose = () => {
-    const { dialog, errors } = this.state;
+    const { errors } = this.state;
     this.setState({ dialog: false });
 
     if (errors.body) {
@@ -71,10 +67,6 @@ class PostSpark extends Component {
 
   render() {
     const { errors, dialog, body } = this.state;
-    const {
-      ui: { loading }
-    } = this.props;
-
     return (
       <>
         <MyButton tip='add spark' onClick={() => this.handleOpen()}>

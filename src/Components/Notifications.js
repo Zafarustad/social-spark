@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import dayjs from 'dayjs';
-import moment from 'moment';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -119,7 +118,7 @@ class Notifications extends Component {
                   </Typography>
                 ) : (
                   <Typography variant='body1'>
-                    {notification.sender} started {type} you
+                    {notification.sender} started {type} you {time}
                   </Typography>
                 )}
               </div>

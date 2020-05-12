@@ -9,7 +9,10 @@ import {
   SET_SPARK,
   ON_LOADED_DATA,
   SUBMIT_COMMENT,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  GET_MESSAGES,
+  POST_MESSAGE,
+  DELETE_MESSAGE
 } from '../Reducers/types';
 import {
   triggerClearErrorAction,
@@ -58,6 +61,21 @@ export const submitCommentACtion = (data) => ({
 
 export const getAllUsersAction = (data) => ({
   type: GET_ALL_USERS,
+  payload: data,
+});
+
+export const getAllMessagesAction = (data) => ({
+  type: GET_MESSAGES,
+  payload: data,
+});
+
+export const postNewMessageAction = (data) => ({
+  type: POST_MESSAGE,
+  payload: data,
+});
+
+export const deleteMessageAction = (data) => ({
+  type: DELETE_MESSAGE,
   payload: data
 })
 
@@ -143,12 +161,38 @@ export const submitCommentDispatch = (sparkId, data) => async (dispatch) => {
   }
 };
 
-export const getAllUsersDispatch = () => async dispatch => {
+export const getAllUsersDispatch = () => async (dispatch) => {
   try {
-    const res = await axios.get('/users')
-    dispatch(getAllUsersAction(res.data))
+    const res = await axios.get('/users');
+    dispatch(getAllUsersAction(res.data));
+  } catch (err) {
+    console.log(err);
   }
-  catch(err) {
-    console.log(err)
+};
+
+export const getAllMessagesDispatch = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/messages');
+    dispatch(getAllMessagesAction(res.data));
+  } catch (err) {
+    console.log(err);
   }
-}
+};
+
+export const postNewMessageDispatch = (message) => async (dispatch) => {
+  try {
+    const res = await axios.post('/message', { body: message });
+    dispatch(postNewMessageAction(res.data));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteMessageDispatch = (messageId) => async (dispatch) => {
+  try {
+    await axios.delete(`/message/${messageId}/delete`);
+    dispatch(deleteMessageAction(messageId));
+  } catch (err) {
+    console.log(err);
+  }
+};

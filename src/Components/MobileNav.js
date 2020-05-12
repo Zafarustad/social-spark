@@ -7,7 +7,6 @@ import UserSearch from './UserSearch';
 import PostSpark from './PostSpark';
 import {
   AppBar,
-  Button,
   Toolbar,
   SwipeableDrawer,
   List,
@@ -15,6 +14,7 @@ import {
   ListItemIcon,
   ListItemText,
   withStyles,
+  IconButton
 } from '@material-ui/core';
 import { logoutUserDispatch } from '../Actions/userActions';
 import HomeIcon from '@material-ui/icons/Home';
@@ -25,7 +25,7 @@ import SignUpIcon from '@material-ui/icons/VpnKey';
 import LoginIcon from '@material-ui/icons/Lock';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import MenuIcon from '@material-ui/icons/Menu';
-import MyButton from './MyButton';
+import ChatRoomIcon from '@material-ui/icons/Forum';
 import { isMobile } from 'react-device-detect';
 
 const styles = {
@@ -111,6 +111,14 @@ class MobileNav extends Component {
                     Following
                   </ListItemText>
                 </ListItem>
+                <ListItem component={Link} to='/chats'>
+                  <ListItemIcon>
+                    <ChatRoomIcon color='secondary' />
+                  </ListItemIcon>
+                  <ListItemText className={classes.itemText}>
+                    Chat Room
+                  </ListItemText>
+                </ListItem>
                 <ListItem component={Link} onClick={this.logoutUser}>
                   <ListItemIcon>
                     <LogoutIcon color='secondary' />
@@ -148,9 +156,9 @@ class MobileNav extends Component {
       <>
         <AppBar>
           <Toolbar>
-            <MyButton onClick={this.toggleDrawer}>
+            <IconButton onClick={this.toggleDrawer}>
               <MenuIcon color='secondary' />
-            </MyButton>
+            </IconButton>
             <SwipeableDrawer
               open={this.state.open}
               onOpen={this.toggleDrawer}
