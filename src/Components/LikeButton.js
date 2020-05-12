@@ -27,7 +27,7 @@ class LikeButton extends Component {
   };
 
   render() {
-    const { user, data } = this.props;
+    const { user } = this.props;
 
     return !user.authenticated ? (
       <Link to='/login'>
@@ -47,7 +47,7 @@ class LikeButton extends Component {
   }
 }
 
-const mapStateToProps = ({ user, data }) => ({ user });
+const mapStateToProps = ({ user }) => ({ user });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(

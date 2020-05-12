@@ -729,3 +729,19 @@ a {
 .comment-form {
   border-bottom: 1px solid rgba(0,0,0,0.4);
 }
+
+.chat-form {
+  position: fixed;
+  bottom: 0;
+  width: 97%;
+  margin: 10px 20px 0px 20px;
+  padding-bottom: 10px;
+  background-color: #fff;
+}
+
+.chat-container {
+  padding: 20px 30px 50px 30px;
+}
+
+
+

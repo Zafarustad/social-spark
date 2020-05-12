@@ -1,4 +1,4 @@
-import { LOADING_UI, SET_ERRORS, SET_USER, CLEAR_ERRORS, ON_LOADED_DATA } from "./types";
+import { LOADING_UI, SET_ERRORS, CLEAR_ERRORS, ON_LOADED_DATA } from "./types";
 
 const initialState = {
   loading: false,

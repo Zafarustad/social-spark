@@ -1,9 +1,6 @@
 import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
 import { isMobile } from "react-device-detect";
 import { Link } from "react-router-dom";
-import MyButton from "./MyButton";
-import Button from "@material-ui/core/Button";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Grid, Typography, Avatar } from "@material-ui/core";
 import dayjs from "dayjs";

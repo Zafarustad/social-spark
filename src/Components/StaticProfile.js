@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { isMobile } from 'react-device-detect';
@@ -14,7 +13,6 @@ import AddDetails from './AddDetails';
 import MyButton from './MyButton';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-import CheckIcon from '@material-ui/icons/Check';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import LocationOn from '@material-ui/icons/LocationOn';
