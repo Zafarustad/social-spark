@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { getAllUsersDispatch } from '../Actions/dataActions';
 import MyButton from './MyButton';
@@ -35,6 +35,10 @@ const styles = {
     width: 60,
     height: 60,
     marginRight: 15,
+    cursor: 'pointer',
+  },
+  username: {
+    cursor: 'pointer',
   },
 };
 
@@ -71,14 +75,12 @@ class UserSearch extends Component {
 
   goToProfile = (username) => {
     const { history } = this.props;
-    history.push(`/user/${username}`);
+    window.history.pushState(null, null, `/user/${username}`);
     window.location.reload();
   };
 
   render() {
-    const {
-      classes,
-    } = this.props;
+    const { classes } = this.props;
     const { dialog, searchField } = this.state;
     return (
       <>
@@ -123,11 +125,14 @@ class UserSearch extends Component {
                             src={user.userImage}
                             className={classes.avatar}
                           />
-                          <a onClick={() => this.goToProfile(user.username)}>
+                          <Link
+                            to={`/user/${user.username}`}
+                            className={classes.username}
+                          >
                             <Typography color='secondary' variant='h5'>
                               {user.username}
                             </Typography>
-                          </a>
+                          </Link>
                           <Divider />
                         </div>
                         {index !== filteredUsers.length - 1 && <hr />}
