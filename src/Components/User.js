@@ -34,6 +34,16 @@ export class User extends Component {
     this.props.getUserDispatch(username);
   }
 
+  componentDidUpdate(prevProps) {
+    const {
+      params: { username },
+    } = this.props.match;
+
+    if (prevProps.match.params.username !== username) {
+      window.location.reload();
+    }
+  }
+
   getuserProfileInfo = () => {
     const { username } = this.props.match.params;
     this.setState({ profile: null });

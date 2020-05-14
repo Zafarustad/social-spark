@@ -51,6 +51,7 @@ class UserSearch extends Component {
   };
 
   openDialog = () => {
+    filteredUsers = []
     const { getAllUsersDispatch } = this.props;
 
     this.setState({ dialog: true });
@@ -58,8 +59,8 @@ class UserSearch extends Component {
   };
 
   closeDialog = () => {
-    this.setState({ dialog: false, searchField: '' });
     filteredUsers = [];
+    this.setState({ dialog: false, searchField: '' });
   };
 
   handleSearch = (event) => {
@@ -69,7 +70,7 @@ class UserSearch extends Component {
     } = this.props;
     this.setState({ searchField: event.target.value });
     filteredUsers = users.filter((user) =>
-      user.username.toLowerCase().startsWith(searchField.toLowerCase())
+      user.username.toLowerCase().includes(searchField.toLowerCase())
     );
   };
 
