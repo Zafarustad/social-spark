@@ -126,7 +126,7 @@ class Login extends React.Component {
               )}
             </form>
             <Link className='mt-4 mr-auto' to='/signup'>
-              {"Don't have an account? Sign Up"}
+              {"Don't have an account? Signup"}
             </Link>
           </div>
         </Grid>

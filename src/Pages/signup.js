@@ -84,7 +84,7 @@ class Signup extends React.Component {
               <SignUpIcon color='primary' />
             </Avatar>
             <Typography component='h1' variant='h5'>
-              Sign in
+              Signup
             </Typography>
             <form onSubmit={this.handleSubmit}>
               <TextField
@@ -149,7 +149,7 @@ class Signup extends React.Component {
                 color='primary'
                 disabled={loading}
               >
-                Log In
+                Signup
               </Button>
               {loading && (
                 <LinearProgress
@@ -160,7 +160,7 @@ class Signup extends React.Component {
               )}
             </form>
               <Link className='mt-4 mr-auto' to='/login'>
-                {'Have an account? Log In'}
+                {'Have an account? Login'}
               </Link>
           </div>
         </Grid>
