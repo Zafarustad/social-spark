@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getUserDispatch } from '../Actions/userActions';
+import { closeSearchDialog } from '../Actions/dataActions';
 import SparkLoader from '../Loaders/SparkLoader';
 import axios from 'axios';
 import { isMobile } from 'react-device-detect';
@@ -30,7 +31,7 @@ export class User extends Component {
         sparkIdParam: sparkId,
       });
 
-    this.getuserProfileInfo();
+    this.getuserProfileInfo(username);
     this.props.getUserDispatch(username);
   }
 
@@ -40,12 +41,13 @@ export class User extends Component {
     } = this.props.match;
 
     if (prevProps.match.params.username !== username) {
-      window.location.reload();
+      this.props.closeSearchDialog();
+      this.getuserProfileInfo(username);
+      this.props.getUserDispatch(username);
     }
   }
 
-  getuserProfileInfo = () => {
-    const { username } = this.props.match.params;
+  getuserProfileInfo = (username) => {
     this.setState({ profile: null });
     axios
       .get(`/user/${username}`)
@@ -150,6 +152,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       getUserDispatch,
+      closeSearchDialog,
     },
     dispatch
   );

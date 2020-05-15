@@ -11,6 +11,8 @@ import {
   GET_MESSAGES,
   POST_MESSAGE,
   DELETE_MESSAGE,
+  OPEN_SEARCH_DIALOG,
+  CLOSE_SEARCH_DIALOG,
 } from '../Reducers/types';
 
 const initialState = {
@@ -19,6 +21,7 @@ const initialState = {
   loading: false,
   users: [],
   messages: [],
+  searchDialog: false,
 };
 
 export default function (state = initialState, action) {
@@ -33,6 +36,18 @@ export default function (state = initialState, action) {
         sparks: action.payload,
         loading: false,
       };
+    case OPEN_SEARCH_DIALOG: {
+      return {
+        ...state,
+        searchDialog: true,
+      };
+    }
+    case CLOSE_SEARCH_DIALOG: {
+      return {
+        ...state,
+        searchDialog: false,
+      };
+    }
     case LIKE_SPARK:
     case UNLIKE_SPARK: {
       let index = state.sparks.findIndex(

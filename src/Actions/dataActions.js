@@ -12,7 +12,9 @@ import {
   GET_ALL_USERS,
   GET_MESSAGES,
   POST_MESSAGE,
-  DELETE_MESSAGE
+  DELETE_MESSAGE,
+  OPEN_SEARCH_DIALOG,
+  CLOSE_SEARCH_DIALOG
 } from '../Reducers/types';
 import {
   triggerClearErrorAction,
@@ -76,7 +78,15 @@ export const postNewMessageAction = (data) => ({
 
 export const deleteMessageAction = (data) => ({
   type: DELETE_MESSAGE,
-  payload: data
+  payload: data,
+});
+
+export const openSearchDialog = () => ({
+  type: OPEN_SEARCH_DIALOG,
+});
+
+export const closeSearchDialog = () => ({
+  type: CLOSE_SEARCH_DIALOG
 })
 
 export const getSparksDispatch = () => async (dispatch) => {

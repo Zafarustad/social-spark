@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter, Link } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
-import { getAllUsersDispatch } from '../Actions/dataActions';
+import {
+  getAllUsersDispatch,
+  openSearchDialog,
+  closeSearchDialog
+} from '../Actions/dataActions';
 import MyButton from './MyButton';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
@@ -46,15 +50,14 @@ let filteredUsers = [];
 
 class UserSearch extends Component {
   state = {
-    dialog: false,
     searchField: '',
   };
 
   openDialog = () => {
-    filteredUsers = []
-    const { getAllUsersDispatch } = this.props;
+    filteredUsers = [];
+    const { getAllUsersDispatch, openSearchDialog } = this.props;
 
-    this.setState({ dialog: true });
+    openSearchDialog();
     getAllUsersDispatch();
   };
 
@@ -74,23 +77,22 @@ class UserSearch extends Component {
     );
   };
 
-  goToProfile = (username) => {
-    const { history } = this.props;
-    window.history.pushState(null, null, `/user/${username}`);
-    window.location.reload();
-  };
-
   render() {
-    const { classes } = this.props;
-    const { dialog, searchField } = this.state;
+    const {
+      classes,
+      data: { searchDialog },
+      closeSearchDialog
+    } = this.props;
+    const { searchField } = this.state;
+
     return (
       <>
         <MyButton tip='Search Users' onClick={this.openDialog}>
           <SearchIcon color='secondary' />
         </MyButton>
         <Dialog
-          open={dialog}
-          onClose={this.closeDialog}
+          open={searchDialog}
+          onClose={() => closeSearchDialog()}
           fullScreen={isMobile ? true : false}
           fullWidth={isMobile ? false : true}
           maxWidth='sm'
@@ -98,7 +100,7 @@ class UserSearch extends Component {
           <DialogTitle>Seacrh Users</DialogTitle>
           <MyButton
             tip='close'
-            onClick={this.closeDialog}
+            onClick={() => closeSearchDialog()}
             tipClassName={classes.closeButton}
           >
             <CloseIcon />
@@ -156,6 +158,8 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       getAllUsersDispatch,
+      openSearchDialog,
+      closeSearchDialog
     },
     dispatch
   );
