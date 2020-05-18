@@ -41,11 +41,14 @@ const styles = {
 
 class StaticProfile extends Component {
   handleImageChange = async (event) => {
+    const {
+      profile: { username },
+    } = this.props;
     const image = event.target.files[0];
     const formData = new FormData();
     formData.append('image', image, image.name);
     await this.props.uploadImageDispatch(formData);
-    this.props.getuserProfileInfo();
+    this.props.getuserProfileInfo(username);
   };
 
   handleEditPicture = () => {

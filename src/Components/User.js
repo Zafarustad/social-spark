@@ -30,7 +30,7 @@ export class User extends Component {
       this.setState({
         sparkIdParam: sparkId,
       });
-
+    this.props.closeSearchDialog();
     this.getuserProfileInfo(username);
     this.props.getUserDispatch(username);
   }

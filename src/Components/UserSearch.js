@@ -87,7 +87,7 @@ class UserSearch extends Component {
 
     return (
       <>
-        <MyButton tip='Search Users' onClick={this.openDialog}>
+        <MyButton tip='Search Users' onClick={() => this.openDialog()}>
           <SearchIcon color='secondary' />
         </MyButton>
         <Dialog
