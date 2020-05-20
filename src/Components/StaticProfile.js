@@ -59,13 +59,13 @@ class StaticProfile extends Component {
   followUser = async (username) => {
     const { followUserDispatch, getuserProfileInfo } = this.props;
     await followUserDispatch(username);
-    getuserProfileInfo();
+    getuserProfileInfo(username);
   };
 
   unFollowUser = async (username) => {
     const { unFollowUserDispatch, getuserProfileInfo } = this.props;
     await unFollowUserDispatch(username);
-    getuserProfileInfo();
+    getuserProfileInfo(username);
   };
 
   render() {
