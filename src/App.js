@@ -79,7 +79,7 @@ class App extends React.Component {
                 />
                 <Route exact path='/user/:username' component={User} />
                 <Route exact path='/users' component={FollowingUserSparks} />
-                <Route exact path='/chats' component={ChatRoom} />
+                {/* <Route exact path='/chats' component={ChatRoom} /> */}
               </Switch>
             </div>
           </Router>

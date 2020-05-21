@@ -111,14 +111,14 @@ class MobileNav extends Component {
                     Following
                   </ListItemText>
                 </ListItem>
-                <ListItem component={Link} to='/chats'>
+                {/* <ListItem component={Link} to='/chats'>
                   <ListItemIcon>
                     <ChatRoomIcon color='secondary' />
                   </ListItemIcon>
                   <ListItemText className={classes.itemText}>
                     Chat Room
                   </ListItemText>
-                </ListItem>
+                </ListItem> */}
                 <ListItem component={Link} onClick={this.logoutUser}>
                   <ListItemIcon>
                     <LogoutIcon color='secondary' />

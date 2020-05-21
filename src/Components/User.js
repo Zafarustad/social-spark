@@ -12,7 +12,7 @@ import Spark from './Spark';
 import MobileNav from './MobileNav';
 import ProfileLoader from '../Loaders/ProfileLoader';
 import StaticProfile from './StaticProfile';
-import EmptySparks from '../assets/empty.png';
+import NoSparks from './NoSparks';
 
 export class User extends Component {
   constructor(props) {
@@ -68,14 +68,7 @@ export class User extends Component {
         return <SparkLoader key={index} />;
       })
     ) : sparks.length === 0 ? (
-      <div className='m-t-20'>
-        <p className='text-center'>No Sparks from this user</p>
-        {!isMobile ? (
-          <img src={EmptySparks} alt='avatar' width='800px' height='500px' />
-        ) : (
-          <img src={EmptySparks} width='410px' alt='avatar' height='340px' />
-        )}
-      </div>
+      <NoSparks />
     ) : !sparkIdParam ? (
       sparks.map((spark) => (
         <Spark userProfile={true} key={spark.sparkId} spark={spark} />
